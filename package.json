@@ -1,0 +1,24 @@
+{
+  "name": "nuxt-app",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "devDependencies": {
+    "@nuxt/devtools": "^1.0.5",
+    "@nuxt/ui": "^2.11.1",
+    "@nuxtjs/supabase": "^1.1.4",
+    "@pinia/nuxt": "^0.5.1",
+    "nuxt": "^3.8.2",
+    "vue": "^3.3.11",
+    "vue-router": "^4.2.5"
+  },
+  "dependencies": {
+    "pinia": "^2.1.7"
+  }
+}

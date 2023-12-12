@@ -1,5 +1,5 @@
 <template>
-    <div class="min-h-screen dark:bg-zinc-900 mb-10">
+    <div class="min-h-screen dark:bg-zinc-900 mb-11">
         <div class="py-7">
             <main>
                 <div class="mx-auto max-w-7xl px-3">
@@ -15,13 +15,13 @@
                 </div>
             </main>
         </div>
-        <nav class="px-3 py-2 bg-zinc-800 fixed bottom-0 min-w-full">
+        <nav class="px-1 py-3 bg-primary-800/20 backdrop-blur fixed bottom-0 min-w-full rounded-t-2xl">
             <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
                 <UContainer>
                     <ul class="flex font-normal flex-row space-x-12 mt-0">
                         <li v-for="route in routes">
-                            <ULink :to='route.route' active-class="text-primary" class="flex flex-col items-center"
-                                inactive-class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200">
+                            <ULink :to='route.route' active-class="text-primary font-extrabold" class="flex flex-col items-center"
+                                inactive-class="text-gray-500 hover:text-gray-700">
                                 <UIcon :name='route.icon' class="text-xl" />
                                 <p class="text-xs">
                                     {{ route.name }}

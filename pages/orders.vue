@@ -1,8 +1,9 @@
 <template>
-  <div class="bg-zinc-900">
-    <slot />
+  <div>
+    
   </div>
 </template>
 
 <script lang="ts" setup>
+
 </script>

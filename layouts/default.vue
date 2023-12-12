@@ -1,5 +1,5 @@
 <template>
-    <div class="min-h-screen dark:bg-slate-900 mb-10">
+    <div class="min-h-screen dark:bg-zinc-900 mb-10">
         <div class="py-7">
             <main>
                 <div class="mx-auto max-w-7xl px-3">
@@ -15,15 +15,15 @@
                 </div>
             </main>
         </div>
-        <nav class="px-3 py-2 bg-slate-800 fixed bottom-0 min-w-full">
+        <nav class="px-3 py-2 bg-zinc-800 fixed bottom-0 min-w-full">
             <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
                 <UContainer>
-                    <ul class="flex font-normal text-sm flex-row space-x-8 mt-0">
+                    <ul class="flex font-normal flex-row space-x-12 mt-0">
                         <li v-for="route in routes">
                             <ULink :to='route.route' active-class="text-primary" class="flex flex-col items-center"
                                 inactive-class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200">
-                                <UIcon :name='route.icon' class="text-2xl" />
-                                <p>
+                                <UIcon :name='route.icon' class="text-xl" />
+                                <p class="text-xs">
                                     {{ route.name }}
                                 </p>
                             </ULink>
@@ -41,7 +41,9 @@ const currentRoute = useRoute()
 
 const routeToTitleMap = {
     index: 'Home',
-    profile: 'Profile'
+    profile: 'Your profile',
+    wallet: 'Your wallet',
+    orders: 'Your orders'
 }
 
 const routes = [
@@ -51,14 +53,22 @@ const routes = [
         icon: 'i-heroicons-home'
     },
     {
+        name: 'Wallet',
+        route: '/wallet',
+        icon: 'i-heroicons-wallet'
+    },
+    {
+        name: 'Orders',
+        route: '/orders',
+        icon: 'i-heroicons-document-text'
+    },
+    {
         name: 'Profile',
         route: '/profile',
         icon: 'i-heroicons-user'
     }
 ]
 
-const supabase = useSupabaseClient()
-const user = useSupabaseUser()
 const { data: role } = await useAsyncData('role', userRole)
 
 </script>

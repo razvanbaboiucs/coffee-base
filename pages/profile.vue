@@ -1,7 +1,5 @@
 <template>
-Profile
-<br/>
-<UButton label="Logout" color="white" variant="ghost" @click="logout" />
+<UButton label="Logout" color="white" @click="logout" />
 </template>
 
 <script setup>

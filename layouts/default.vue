@@ -4,12 +4,9 @@
             <main>
                 <div class="mx-auto max-w-7xl px-3">
                     <div class="flex flex-row justify-between">
-                        <h1 class="text-3xl font-bold text-primary mb-6">
+                        <h1 class="text-4xl font-bold text-primary mb-6">
                             {{ routeToTitleMap[currentRoute.name] }}
                         </h1>
-                        <UBadge class="mb-4 text-sm" variant="outline">
-                            {{ role === 'admin' ? 'Admin' : 'Basic user' }}
-                        </UBadge>
                     </div>
                     <slot />
                 </div>

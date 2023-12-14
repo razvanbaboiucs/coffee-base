@@ -14,5 +14,13 @@ export default defineNuxtConfig({
   },
   colorMode: {
     preference: 'light'
+  },
+  pinia: {
+    storesDirs: ['./stores/**']
+  },
+  app: {
+    head: {
+      viewport: 'width=device-width, initial-scale=1, maximum-scale=1'
+    }
   }
 })

@@ -50,7 +50,6 @@ const state = reactive({
 
 const validate = (state) => {
     const errors = []
-    console.log(state.password.length)
     if (!state.email) errors.push({ path: 'email', message: 'Required' })
     if (!state.password) errors.push({ path: 'password', message: 'Required' })
     if (state.password.length < 6) errors.push({ path: 'password', message: 'Password should have at least 6 characters' })

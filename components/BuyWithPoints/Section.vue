@@ -22,25 +22,25 @@ const items = [{
   label: 'Level 1',
   offers: [{
     name: 'Espresso',
-    cost: '20',
+    cost: 20,
     description: 'The best coffee'
   }, {
     name: 'Capuccino',
-    cost: '35',
+    cost: 35,
     description: 'The best milk coffee'
   }]
 }, {
   label: 'Level 2',
   offers: [{
     name: 'Flat white',
-    cost: '40',
+    cost: 40,
     description: 'The best double shot milk coffee'
   }]
 }, {
   label: 'Level 3',
   offers: [{
     name: 'Latte',
-    cost: '50',
+    cost: 50,
     description: 'The biggest milk coffee'
   }]
 }]

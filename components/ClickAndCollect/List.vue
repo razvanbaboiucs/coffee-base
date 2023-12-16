@@ -1,10 +1,13 @@
 <template>
-    <p class="text-2xl font-semibold">Click and collect</p>
-    <ul class="flex flex-row items-stretch overflow-x-scroll overflow-y-hidden h-60 space-x-4">
-        <li v-for="item in items" class="h-full mt-2">
-            <ClickAndCollectCard :id='item.id' :image-path="item.imagePath" :name="item.name" :price="item.price" :description="item.description" />
-        </li>
-    </ul>
+    <div>
+        <p class="text-2xl font-semibold">Click and collect</p>
+        <ul class="flex flex-row items-stretch overflow-x-scroll overflow-y-hidden h-60 space-x-4">
+            <li v-for="item in items" class="h-full mt-2">
+                <ClickAndCollectCard :id='item.id' :image-path="item.imagePath" :name="item.name" :price="item.price"
+                    :description="item.description" />
+            </li>
+        </ul>
+    </div>
 </template>
 
 <script setup>

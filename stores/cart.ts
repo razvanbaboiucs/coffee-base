@@ -53,6 +53,12 @@ export const useCartStore = defineStore('cart', () => {
     return totalItems.value === 0
   }
 
+  const emptyCart = () => {
+    items.value = []
+    totalCost.value = 0
+    totalItems.value = 0
+  }
+
   return {
     items,
     addItem,
@@ -60,7 +66,8 @@ export const useCartStore = defineStore('cart', () => {
     increaseItemQuantity,
     totalItems,
     totalCost,
-    isEmpty
+    isEmpty,
+    emptyCart
   };
 
 })

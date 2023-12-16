@@ -17,7 +17,8 @@
 </template>
 
 <script lang="ts" setup>
-const userLevel = 1
+const {data: user} = await useAsyncData('user', getUser)
+const userLevel = user.value?.level || 1
 const items = [{
   label: 'Level 1',
   offers: [{

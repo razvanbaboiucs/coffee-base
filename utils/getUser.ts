@@ -6,8 +6,7 @@ export default async function (): Promise<User | undefined> {
         .eq('id', user?.value?.id || '')
         .limit(1)
     if (error) {
-        console.error(error)
-        return undefined
+        throw error
     }
     return {
         id: data[0].id,

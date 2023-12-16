@@ -43,12 +43,19 @@
   </div>
 </template>
 
-<script lang="ts" setup>
+<script setup>
 const cartStore = useCartStore()
+const user = useSupabaseUser()
+const supabase = useSupabaseClient()
+const toast = useToast()
 const isPayModalOpen = ref(false)
 
-function pay() {
+async function pay() {
   isPayModalOpen.value = true
+  const { error } = await supabase.from('orders').insert({user_id: user.value?.id, state: 'new', item_summary: cartStore.orderSummary()})
+  if (error) {
+    toast.add({ title: 'Error', description: error.message, color: 'red' })
+  }
   setTimeout(() => {
     cartStore.emptyCart()
     isPayModalOpen.value = false

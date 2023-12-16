@@ -59,6 +59,24 @@ export const useCartStore = defineStore('cart', () => {
     totalItems.value = 0
   }
 
+  const orderSummary = (): OrderSummary => {
+    return {
+      totalItems: totalItems.value,
+      totalCost: totalCost.value,
+      items: [
+        ...items.value.map(item => {
+          return {
+            id: item.id,
+            name: item.name,
+            quantity: item.quantity,
+            price: item.price,
+            totalPrice: item.totalPrice
+          }
+        })
+      ]
+    }
+  }
+
   return {
     items,
     addItem,
@@ -67,7 +85,7 @@ export const useCartStore = defineStore('cart', () => {
     totalItems,
     totalCost,
     isEmpty,
-    emptyCart
+    emptyCart,
+    orderSummary
   };
-
 })

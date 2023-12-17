@@ -7,7 +7,7 @@
                     {{ item.name }}
                 </p>
                 <p class="text-lg">
-                    {{ item.totalPrice }} lei
+                    {{ item.totalPrice }} euros
                 </p>
             </div>
         </div>

@@ -10,7 +10,7 @@ export default defineNuxtConfig({
     }
   },
   imports: {
-    dirs: ['./stores']
+    dirs: ['./stores', './types']
   },
   colorMode: {
     preference: 'light'

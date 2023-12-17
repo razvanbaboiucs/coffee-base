@@ -1,6 +1,1 @@
-enum OrderStateEnum {
-    new,
-    pending,
-    declined,
-    finished
-}
+type OrderStateEnum = 'new'|'pending'|'declined'|'finished'

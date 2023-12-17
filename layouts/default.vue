@@ -8,7 +8,7 @@
                 </div>
             </main>
         </div>
-        <nav class="px-1 py-3 bg-primary-800/20 backdrop-blur fixed bottom-0 min-w-full rounded-t-2xl">
+        <nav v-if="userRole === 'basic_user'" class="px-1 py-3 bg-primary-800/20 backdrop-blur fixed bottom-0 min-w-full rounded-t-2xl">
             <NavCartButton/>
             <NavBar/>
         </nav>
@@ -16,5 +16,5 @@
 </template>
 
 <script setup>
-
+const {data: userRole} = await useAsyncData('userRole', getUserRole)
 </script>

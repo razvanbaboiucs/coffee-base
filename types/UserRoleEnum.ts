@@ -1,5 +1,1 @@
-enum UserRoleEnum {
-    basic_user,
-    admin,
-    coffee_shop
-}
+type UserRoleEnum ='basic_user'|'admin'|'coffee_shop'

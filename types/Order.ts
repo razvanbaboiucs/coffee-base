@@ -3,5 +3,6 @@ type Order = {
     itemSummary: OrderSummary,
     total: number,
     id: number,
-    userId: string
+    userId: string,
+    pointsUsed: number,
 }

@@ -36,7 +36,8 @@ supabase.channel("orders")
     const order = {
       ...payload.new,
       itemSummary: payload.new.item_summary,
-      userId: payload.new.user_id
+      userId: payload.new.user_id,
+      pointsUsed: payload.new.points_used
     } as Order
 
     newOrders.value?.unshift(order)
@@ -47,7 +48,8 @@ supabase.channel("orders")
     const order = {
       ...payload.new,
       itemSummary: payload.new.item_summary,
-      userId: payload.new.user_id
+      userId: payload.new.user_id,
+      pointsUsed: payload.new.points_used
     } as Order
 
     if (order.state === 'declined') {

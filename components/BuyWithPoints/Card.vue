@@ -35,6 +35,22 @@
                 </template>
             </UCard>
         </UModal>
+        <UModal v-model="isPayModalOpen">
+            <UCard class="p-3">
+                <template #header>
+                    <div class="flex flex-row justify-center">
+                        <p class="text-2xl font-bold text-primary">Order successful</p>
+                    </div>
+                </template>
+                <UContainer>
+                    <ClientOnly>
+                        <div class="flex flex-col justify-center align-middle items-center my-1">
+                            <img src="/success-animation.gif" class="w-32 h-32 " />
+                        </div>
+                    </ClientOnly>
+                </UContainer>
+            </UCard>
+        </UModal>
     </div>
 </template>
 
@@ -43,12 +59,23 @@ const props = defineProps<{
     name: string,
     description: string,
     cost: number,
-    buyDisabled: boolean
+    buyDisabled: boolean,
+    id: number
 }>()
 
 const isModalOpen = ref(false)
+const isPayModalOpen = ref(false)
+const toast = useToast()
 
-function buyWithPoints() {
+async function buyWithPoints() {
     isModalOpen.value = false
+    isPayModalOpen.value = true
+    const error = await buyProductWithPoints(props.id, props.name, props.cost)
+    if (error) {
+        toast.add({ title: 'Error', description: error.message, color: 'red' })
+    }
+    setTimeout(() => {
+        isPayModalOpen.value = false
+    }, 2800)
 }
 </script>

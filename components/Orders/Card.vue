@@ -18,7 +18,12 @@
             </li>
           </ul>
         </div>
-        <p class="font-normal text-lg w-3/12 text-right">{{ total }} euros</p>
+        <div v-if="!!pointsUsed" class="w-3/12">
+          <p class="font-normal text-right">{{ pointsUsed }} points</p>
+        </div>
+        <div v-else class="w-3/12">
+          <p class="font-normal text-right">{{ total }} euros</p>
+        </div>
       </div>
     </UCard>
     <UModal v-model="openOrderModal">
@@ -41,7 +46,12 @@
             <UDivider/>
             <div class="flex flex-row justify-between">
               <p class="font-semibold">Quantity: {{ itemSummary.totalItems }}</p>
-              <p class="font-semibold">Price: {{ total }} euros</p>
+              <div v-if="!!pointsUsed">
+                <p class="font-semibold">Price: {{ pointsUsed }} points</p>
+              </div>
+              <div v-else>
+                <p class="font-semibold">Price: {{ total }} euros</p>
+              </div>
             </div>
           </div>
         </UContainer>
@@ -69,7 +79,8 @@ const props = defineProps<{
   state: OrderStateEnum,
   total: number,
   itemSummary: OrderSummary,
-  userId: string
+  userId: string,
+  pointsUsed: number
 }>()
 
 const {data: userRole} = await useAsyncData('userRole', getUserRole)
@@ -95,6 +106,9 @@ async function declineOrder() {
   if (error) {
     toast.add({title: 'Error', description: error.message})
   }
+  if (!!props.pointsUsed) {
+    await returnPointsToUser()
+  }
   openOrderModal.value = false
 }
 
@@ -103,7 +117,9 @@ async function acceptOrder() {
   if (error) {
     toast.add({title: 'Error', description: error.message})
   }
-  await addPointsToUser()
+  if(!props.pointsUsed) {
+    await addPointsToUser()
+  }
   openOrderModal.value = false
 }
 
@@ -117,6 +133,13 @@ async function finishOrder() {
 
 async function addPointsToUser() {
   const error = await addPointsToUserWithId(props.userId, props.total)
+  if (error) {
+    toast.add({title: 'Error', description: error.message})
+  }
+}
+
+async function returnPointsToUser() {
+  const error = await addPointsToUserWithId(props.userId, props.pointsUsed)
   if (error) {
     toast.add({title: 'Error', description: error.message})
   }

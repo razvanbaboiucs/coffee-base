@@ -5,5 +5,6 @@ type User = {
     level: number,
     points: number,
     firstName: string,
-    lastName: string
+    lastName: string,
+    coffeeShopName: string
 }

@@ -1,11 +1,11 @@
 <template>
-    <div class="space-y-3">
-        <div v-if="userRole === 'basic_user'">
+    <div>
+        <div v-if="userRole === 'basic_user'" class="space-y-3">
             <LevelCard />
             <ClickAndCollectList />
             <BuyWithPointsSection />
         </div>
-        <div v-if="userRole === 'coffee_shop'">
+        <div v-if="userRole === 'coffee_shop'" class="space-y-3">
             <CoffeeShopOrdersList/>
         </div>
     </div>

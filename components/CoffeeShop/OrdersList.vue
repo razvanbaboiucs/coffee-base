@@ -26,20 +26,48 @@ const items = [{
   orders: finishedOrders
 }, {
   label: 'Declined',
-  offers: declinedOrders
+  orders: declinedOrders
 }]
 
 const supabase = useSupabaseClient()
 const toast = useToast()
 supabase.channel("orders")
   .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'orders' }, payload => {
-    const newResource = payload.new
+    const order = {
+      ...payload.new,
+      itemSummary: payload.new.item_summary,
+      userId: payload.new.user_id
+    } as Order
+
+    newOrders.value?.unshift(order)
+
     toast.add({title: 'New order', description: 'New order has been placed', color: 'green'})
-    newOrders.value?.unshift({
-      ...newResource,
-      itemSummary: newResource.item_summary
-    } as Order)
   })
+  .on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'orders' }, payload => {
+    const order = {
+      ...payload.new,
+      itemSummary: payload.new.item_summary,
+      userId: payload.new.user_id
+    } as Order
+
+    if (order.state === 'declined') {
+      declinedOrders.value?.unshift(order)
+      newOrders.value = newOrders.value?.filter(o => o.id !== order.id)
+      toast.add({title: 'Order declined', description: `Order ${order.id} has been declined`, color: 'red'})
+    }
+    else if (order.state === 'pending') {
+      pendingOrders.value?.unshift(order)
+      newOrders.value = newOrders.value?.filter(o => o.id !== order.id)
+      toast.add({title: 'Order accepted', description: `Order ${order.id} has been accepted`, color: 'cyan'})
+    }
+    else {
+      finishedOrders.value?.unshift(order)
+      pendingOrders.value = pendingOrders.value?.filter(o => o.id !== order.id)
+      toast.add({title: 'Order finished', description: `Order ${order.id} is ready for pickup`, color: 'green'})
+    }
+
+  })
+
   .subscribe()
 
 </script>

@@ -2,7 +2,7 @@ export default async function (): Promise<User | undefined> {
     const supabase = useSupabaseClient()
     const user = useSupabaseUser()
     const { data, error } = await supabase.from('users')
-        .select('id, email, role, first_name, last_name, level, points')
+        .select('id, email, role, first_name, coffee_shop_name, last_name, level, points')
         .eq('id', user?.value?.id || '')
         .limit(1)
     if (error) {
@@ -15,6 +15,7 @@ export default async function (): Promise<User | undefined> {
         firstName: data[0].first_name,
         lastName: data[0].last_name,
         level: data[0].level,
-        points: data[0].points
+        points: data[0].points,
+        coffeeShopName: data[0].coffee_shop_name
     }
 }

@@ -1,6 +1,7 @@
 type Order = {
     state: OrderStateEnum,
     itemSummary: OrderSummary,
-    total: number
-    id: number
+    total: number,
+    id: number,
+    userId: string
 }

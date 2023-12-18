@@ -9,7 +9,7 @@ See a **demo** of the application [here](https://coffee-base.vercel.app/). **Not
 > - password: Password123
 
 > Basic user demo account:
-> - email: basic@email.com
+> - email: basic@user.com
 > - password: Password123
 
 ## Features

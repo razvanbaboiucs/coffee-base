@@ -1,8 +1,8 @@
 # CoffeeBase
 
-This is a template app for any coffee shop to take and customize to create their own personal app where people can order coffee, aquire points, gain levels and unlock special offers.
+This is a template app for any coffee shop to take and customize to create their own personal PWA app where people can order coffee, aquire points, gain levels and unlock special offers.
 
-See a **demo** of the application [here](https://coffee-base.vercel.app/).
+See a **demo** of the application [here](https://coffee-base.vercel.app/). **Note**: the app is designed for mobile only.
 
 > Coffee shop demo account:
 > - email: coffee@shop.com
